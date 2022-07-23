@@ -25,7 +25,8 @@ class MyBot:
             Upgrade.PROJECTILE_DAMAGE,
             Upgrade.MAX_HP_UPGRADE,
             Upgrade.BODY_DAMAGE_UPGRADE,
-            Upgrade.HP_REGEN
+            Upgrade.HP_REGEN,
+            Upgrade.PROJECTILE_TIME_TO_LIVE
         ])
 
     def tick(self, state: GameState) -> Action:
