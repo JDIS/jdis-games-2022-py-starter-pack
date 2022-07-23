@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import ssl
 
 import websockets
 
@@ -24,7 +25,10 @@ class Socket:
         await self.disconnect()
 
     async def connect(self):
-        self._websocket = await websockets.connect(self._url)
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        self._websocket = await websockets.connect(self._url, ssl=ctx)
         logging.info(f"Connected to socket at {self._url}")
 
     async def disconnect(self):
